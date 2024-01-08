@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background: url('caution2.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .signin-box, .reporting-box, .signup-box {
+      text-align: center;
+    }
+
+    h1 {
+      color: #1861bf;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin: 10px 0 5px;
+    }
+
+    input,
+    textarea,
+    select {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #1861bf;
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0d4a75;
+    }
+
+    .file-upload {
+      margin-top: 10px;
+    }
+
+    .file-upload input {
+      display: none;
+    }
+
+    .file-upload label {
+      background-color: #1861bf;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .file-upload label:hover {
+      background-color: #0d4a75;
+    }
+
+    .signup-link {
+      margin-top: 20px;
+      color: #1861bf;
+    }
+
+    .signup-link a {
+      color: #1861bf;
+      text-decoration: none;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <title>CRIME INFORMATION MANAGEMENT SYSTEM</title>
+</head>
+<body>
+
+  <div class="container">
+    <div class="signin-box" id="signInBox">
+      <h1>CRIME INFORMATION MANAGEMENT SYSTEM</h1>
+      <form id="signInForm" onsubmit="redirectToReportPage(); return false;">
+        <label for="username">Enter your username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Enter your password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Sign In</button>
+      </form>
+      <p class="forgot-password">Forgot your password? <a href="#">Reset here</a></p>
+      <div class="signup-link">
+        <p>Don't have an account? <a href="#" onclick="showSignUpForm()">Sign up here</a></p>
+      </div>
+    </div>
+
+    <div class="reporting-box" id="reportingBox" style="display:none;">
+      <h1>REPORT CRIME</h1>
+      <form id="reportCrimeForm">
+        <label for="reporterName">Your Name:</label>
+        <input type="text" id="reporterName" name="reporterName" required>
+
+        <label for="crimeType">Crime Type:</label>
+        <input type="text" id="crimeType" name="crimeType" required>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required>
+
+        <label for="time">Time:</label>
+        <input type="datetime-local" id="time" name="time" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+
+        <div class="file-upload">
+          <input type="file" id="fileInput" name="fileInput">
+          <label for="fileInput">Choose File</label>
+        </div>
+
+        <button type="submit">Submit Report</button>
+      </form>
+    </div>
+
+    <div class="signup-box" id="signUpBox" style="display:none;">
+      <h1>Sign Up</h1>
+      <form id="signUpForm">
+        <label for="newUsername">Choose a username:</label>
+        <input type="text" id="newUsername" name="newUsername" required>
+        <label for="newPassword">Choose a password:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    function redirectToReportPage() {
+      // You can add your authentication logic here.
+      // For demonstration purposes, I'm redirecting to the report page.
+      document.getElementById('signInBox').style.display = 'none';
+      document.getElementById('reportingBox').style.display = 'block';
+    }
+    function showSignUpForm() {
+      document.getElementById('signInBox').style.display = 'none';
+      document.getElementById('signUpBox').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
